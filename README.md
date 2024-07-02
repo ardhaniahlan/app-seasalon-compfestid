@@ -16,3 +16,5 @@ Aplikasi yang bisa melakukan reservasi service.
 - Kotlin
 - Emulator Android atau perangkat fisik untuk pengujian
 
+Download [App](https://github.com/ardhaniahlan/app-seasalon-compfestid/blob/app-seasalon/app-debug.apk)
+
