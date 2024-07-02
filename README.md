@@ -11,7 +11,7 @@ Aplikasi yang bisa melakukan reservasi service.
 - Pencarian Service
 - CRUD
 
-## Persyaratan
+## Pembuatan Aplikasi
 - [Android Studio](https://developer.android.com/studio)
 - Kotlin
 - Emulator Android atau perangkat fisik untuk pengujian
