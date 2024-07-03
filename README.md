@@ -1,6 +1,6 @@
 # SEA Salon
 
-Aplikasi yang bisa melakukan reservasi service.
+Aplikasi mobile android yang bisa melakukan reservasi service salon.
 
 ## Daftar Isi
 - [Fitur](#fitur)
