@@ -17,3 +17,4 @@ Aplikasi mobile android yang bisa melakukan reservasi service salon.
 - Firebase
 - Emulator Android atau perangkat fisik untuk pengujian
 
+Download [App](https://github.com/ardhaniahlan/app-seasalon-compfestid/blob/app-seasalon/app-debug.apk)
