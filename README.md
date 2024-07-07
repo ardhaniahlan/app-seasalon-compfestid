@@ -14,5 +14,6 @@ Aplikasi mobile android yang bisa melakukan reservasi service salon.
 ## Pembuatan Aplikasi
 - [Android Studio](https://developer.android.com/studio)
 - Kotlin
+- Firebase
 - Emulator Android atau perangkat fisik untuk pengujian
 
