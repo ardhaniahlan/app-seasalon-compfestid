@@ -15,6 +15,7 @@ Aplikasi yang bisa melakukan reservasi service.
 - [Android Studio](https://developer.android.com/studio)
 - Kotlin
 - Emulator Android atau perangkat fisik untuk pengujian
+- Firebase
 
 Download [App](https://github.com/ardhaniahlan/app-seasalon-compfestid/blob/app-seasalon/app-debug.apk)
 
