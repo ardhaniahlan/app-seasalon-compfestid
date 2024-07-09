@@ -20,10 +20,10 @@ import org.apps.salon.model.Reservation
 class ScheduleActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityScheduleBinding
-    private lateinit var databaseReservation: DatabaseReference
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseStore: FirebaseFirestore
     private lateinit var scheduleAdapter : ScheduleAdapter
+    private lateinit var databaseReservation: DatabaseReference
     private lateinit var listSchedule: ArrayList<Reservation>
 
     override fun onCreate(savedInstanceState: Bundle?) {

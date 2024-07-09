@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Salon"
         tools:targetApi="31">
         <activity
+            android:name=".MyScheduleActivity"
+            android:exported="false" />
+        <activity
             android:name=".ScheduleActivity"
             android:exported="false" />
         <activity

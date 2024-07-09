@@ -10,11 +10,13 @@ import android.widget.NumberPicker
 import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 import org.apps.salon.databinding.ActivityReservationBinding
 import org.apps.salon.model.Reservation
 import java.text.SimpleDateFormat
@@ -25,6 +27,8 @@ class ReservationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityReservationBinding
     private lateinit var databaseReservation: DatabaseReference
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseStore: FirebaseFirestore
     private var selectedDate: Calendar? = null
 
 
@@ -49,9 +53,26 @@ class ReservationActivity : AppCompatActivity() {
                 binding.date.text = "Select Date"
                 binding.time.text = "Select Time"
             }
-            btnSubmit.setOnClickListener {
-                saveData()
+
+            firebaseAuth = FirebaseAuth.getInstance()
+            firebaseStore = FirebaseFirestore.getInstance()
+            val currentUser = firebaseAuth.currentUser
+            if (currentUser != null) {
+                val userId = currentUser.uid
+                btnSubmit.setOnClickListener {
+                    saveData(userId)
+                }
+                val fullnameref = firebaseStore.collection("users").document(userId)
+                fullnameref.get().addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val fullname = document.getString("fullName")
+                        val phoneNumber = document.getString("phoneNumber")
+                        binding.editTextName.setText(fullname)
+                        binding.editTextPhoneNumber.setText(phoneNumber)
+                    }
+                }
             }
+
             date.setOnClickListener {
                 showDatePickerDialog(binding.date)
             }
@@ -61,7 +82,7 @@ class ReservationActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveData() {
+    private fun saveData(userId: String) {
         val customerName = binding.editTextName.text.toString().trim()
         val phoneNumber = binding.editTextPhoneNumber.text.toString().trim()
         val receivedData = intent.getStringExtra("data")
@@ -72,7 +93,7 @@ class ReservationActivity : AppCompatActivity() {
 
         if (customerName.isNotEmpty() && phoneNumber.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()){
             val id = databaseReservation.push().key
-            val reservation = Reservation(id!!,customerName,phoneNumber,service,date,time)
+            val reservation = Reservation(id!!,customerName,phoneNumber,service,date,time,userId)
             databaseReservation.child(id).setValue(reservation)
                 .addOnCompleteListener{
                     Toast.makeText(this, "Data Disimpan", Toast.LENGTH_SHORT).show()
@@ -84,7 +105,6 @@ class ReservationActivity : AppCompatActivity() {
             Toast.makeText(this, "Lengkapi Field", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun showDatePickerDialog(date: TextView) {
         val calendar = Calendar.getInstance()

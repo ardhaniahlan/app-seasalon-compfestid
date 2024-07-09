@@ -25,6 +25,9 @@
         app:menu="@menu/bottom_navbar"
         app:layout_constraintStart_toStartOf="parent"
         app:labelVisibilityMode="unlabeled"
-        android:background="#F1F6F5"/>
+        android:background="#F1F6F5"
+        app:itemRippleColor="@color/blue"
+        app:itemIconTint="@color/blue"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

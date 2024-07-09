@@ -11,7 +11,7 @@ import org.apps.salon.model.Reservation
 
 class ScheduleAdapter(
     private val listSchedule: ArrayList<Reservation>,
-    private val onDeleteClickListener: OnDeleteClickListener
+    private val onDeleteClickListener: OnDeleteClickListener? = null
 ) : RecyclerView.Adapter<ScheduleAdapter.ViewHolder> () {
 
     private lateinit var firebaseAuth: FirebaseAuth
@@ -27,7 +27,7 @@ class ScheduleAdapter(
             binding.btnDelete.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    onDeleteClickListener.onDeleteClick(position)
+                    onDeleteClickListener?.onDeleteClick(position)
                 }
             }
         }

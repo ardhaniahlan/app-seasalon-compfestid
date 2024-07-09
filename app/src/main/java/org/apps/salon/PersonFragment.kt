@@ -27,11 +27,18 @@ class PersonFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseStore = FirebaseFirestore.getInstance()
         preferencesManager = PreferencesManager(requireContext())
-
-        binding.btnLogout.setOnClickListener {
-            logoutUser()
-        }
         welcomeName()
+
+        binding.apply {
+            mySchedule.setOnClickListener {
+                startActivity(Intent(context,MyScheduleActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            }
+
+            btnLogout.setOnClickListener {
+                logoutUser()
+            }
+        }
 
         return binding.root
     }
@@ -68,6 +75,7 @@ class PersonFragment : Fragment() {
                         binding.fullname.text = fullname
                         binding.phoneNumber.text = phoneNumber
                         binding.role.text = role
+                        binding.mySchedule.visibility = View.GONE
                     }
                 }
             }

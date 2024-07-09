@@ -6,5 +6,6 @@ data class Reservation(
     val phoneNumber: String? = null,
     val service: String? = null,
     val date: String? = null,
-    val time: String? = null
+    val time: String? = null,
+    val userId: String = ""
 )
